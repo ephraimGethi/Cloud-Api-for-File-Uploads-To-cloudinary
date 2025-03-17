@@ -6,6 +6,9 @@ from rest_framework import serializers
 class ComputerSerializer(serializers.ModelSerializer):
     avatar = serializers.ImageField(write_only=True)
     image = serializers.SerializerMethodField()
+    video = serializers.FileField(write_only=True, required=False)
+    document = serializers.FileField(write_only=True, required=False)
+
     video_url = serializers.SerializerMethodField()
     document_url = serializers.SerializerMethodField()
     

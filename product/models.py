@@ -6,7 +6,7 @@ class computer(models.Model):
     name = models.TextField()
     avatar = cloudinary.models.CloudinaryField("image", null=True, blank=True) 
     video = cloudinary.models.CloudinaryField("video", null=True, blank=True)  
-    document = cloudinary.models.CloudinaryField("raw", null=True, blank=True) 
+    document = cloudinary.models.CloudinaryField("raw", null=True, blank=True,resource_type="raw") 
     description = models.TextField()
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
