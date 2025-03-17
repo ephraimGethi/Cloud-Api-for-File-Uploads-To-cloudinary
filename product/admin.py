@@ -31,3 +31,4 @@ class ComputerAdmin(admin.ModelAdmin):
     #     return "No document uploaded"
 
     get_document_url.short_description = "Document"
+    #   hey
