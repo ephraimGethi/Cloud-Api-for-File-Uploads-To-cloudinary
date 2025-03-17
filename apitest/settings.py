@@ -17,8 +17,8 @@ import cloudinary.api
 
 cloudinary.config(
     cloud_name="dwhihrtd",
-    api_key="38825351516663",
-    api_secret="SUJYB-qjuEpQvt1MJwSUeoM"
+    api_key="388251516663",
+    api_secret="SUJYB-quEpQvt1MJwSUeoM"
 )
 
 from pathlib import Path
@@ -154,10 +154,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": "dwhihrtjd",
-    "API_KEY": "388253515166163",
-    "API_SECRET": "SUJYB-VS76qjuEpQvt1MJwSUeoM",
+    "API_KEY": "3815166163",
+    "API_SECRET": "SUJYB-wSUeoM",
 }
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-MEDIA_URL = "https://res.cloudinary.com/dwhihrtjd/"
+MEDIA_URL = "https://res.cloudinary.com/dwhtjd/"
 
