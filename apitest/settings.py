@@ -16,9 +16,9 @@ import cloudinary.uploader
 import cloudinary.api
 
 cloudinary.config(
-    cloud_name="dwhihrtjd",
-    api_key="388253515166163",
-    api_secret="SUJYB-VS76qjuEpQvt1MJwSUeoM"
+    cloud_name="dwhihrtd",
+    api_key="38825351516663",
+    api_secret="SUJYB-qjuEpQvt1MJwSUeoM"
 )
 
 from pathlib import Path
@@ -100,7 +100,7 @@ DATABASES = {
         'ENGINE': os.environ.get('DB_ENGINE','django.db.backends.postgresql'),
         'NAME': os.environ.get('PG_DB','ephraim'),
         'USER': os.environ.get('PG_USER','postgres'),
-        'PASSWORD': os.environ.get('PG_PASSWORD','Ephraim001?'),
+        'PASSWORD': os.environ.get('PG_PASSWORD','Bazuu101'),
         'HOST': os.environ.get('PG_HOST','localhost'),
         'PORT': os.environ.get('PG_PORT','5432'),
     }
