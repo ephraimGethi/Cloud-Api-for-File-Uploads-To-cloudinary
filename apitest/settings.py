@@ -16,9 +16,9 @@ import cloudinary.uploader
 import cloudinary.api
 
 cloudinary.config(
-    cloud_name="dwhihrtjd",
-    api_key="388253515166163",
-    api_secret="SUJYB-VS76qjuEpQvt1MJwSUeoM"
+    cloud_name="dwhihrtd",
+    api_key="388251516663",
+    api_secret="SUJYB-quEpQvt1MJwSUeoM"
 )
 
 from pathlib import Path
@@ -100,7 +100,7 @@ DATABASES = {
         'ENGINE': os.environ.get('DB_ENGINE','django.db.backends.postgresql'),
         'NAME': os.environ.get('PG_DB','ephraim'),
         'USER': os.environ.get('PG_USER','postgres'),
-        'PASSWORD': os.environ.get('PG_PASSWORD','Ephraim001?'),
+        'PASSWORD': os.environ.get('PG_PASSWORD','Bazuu101'),
         'HOST': os.environ.get('PG_HOST','localhost'),
         'PORT': os.environ.get('PG_PORT','5432'),
     }
@@ -154,10 +154,10 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CLOUDINARY_STORAGE = {
     "CLOUD_NAME": "dwhihrtjd",
-    "API_KEY": "388253515166163",
-    "API_SECRET": "SUJYB-VS76qjuEpQvt1MJwSUeoM",
+    "API_KEY": "3815166163",
+    "API_SECRET": "SUJYB-wSUeoM",
 }
 
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-MEDIA_URL = "https://res.cloudinary.com/dwhihrtjd/"
+MEDIA_URL = "https://res.cloudinary.com/dwhtjd/"
 
