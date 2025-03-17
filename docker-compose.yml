@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  djangoapp:
+    container_name: djangoapp
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PG_USER=postgres
+      - PG_PASSWORD=postgres
+      - PG_DB=ephraim
+      - PG_HOST=db
+      - PG_PORT=5432
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "sleep 5 && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=ephraim
+    ports:
+      - "1234:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      retries: 5
+      timeout: 3s
+
+volumes:
+  pgdata:
