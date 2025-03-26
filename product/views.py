@@ -5,11 +5,13 @@ from .serializers import ComputerSerializer,RoomSerializer
 from rest_framework import status
 from rest_framework.parsers import FileUploadParser,MultiPartParser,FormParser,JSONParser
 from .models import computer,Rooms
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view,renderer_classes
+from rest_framework.renderers import JSONRenderer
 # Create your views here.
 
 class ComputerView(APIView):
     parser_classes = [MultiPartParser,FormParser]
+    renderer_classes = [JSONRenderer]
     def post(self,request):
         serializer = ComputerSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
@@ -23,6 +25,7 @@ class ComputerView(APIView):
         return Response(serializer.data)
 
 @api_view(['POST','GET'])
+@renderer_classes([JSONRenderer])
 def addNewRooms(request):
     if request.method == 'POST':
         if isinstance(request.data,list):
