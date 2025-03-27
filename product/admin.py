@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import *
 from django.utils.html import format_html 
 
-@admin.register(computer)
+@admin.register(Computer)
 class ComputerAdmin(admin.ModelAdmin):
     fields = ['name','avatar','video','document','description','updated_at','created_at','get_image_url','get_document_url']
     list_display = ['name','avatar','video','document','description','updated_at','created_at','get_image_url','get_document_url']
