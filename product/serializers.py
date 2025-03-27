@@ -8,14 +8,15 @@ class ComputerSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
     video = serializers.FileField(write_only=True, required=False)
     document = serializers.FileField(write_only=True, required=False)
-
+    id = serializers.ReadOnlyField()
     video_url = serializers.SerializerMethodField()
     document_url = serializers.SerializerMethodField()
+
     
 
     class Meta:
         model = Computer
-        fields = ['name', 'avatar', 'video', 'document', 'image', 'video_url', 'document_url', 'description']
+        fields = ['id','name', 'avatar', 'video', 'document', 'image', 'video_url', 'document_url', 'description']
 
     def get_image(self, obj):
         return obj.avatar.url if obj.avatar else None

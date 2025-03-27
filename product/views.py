@@ -4,7 +4,6 @@ from rest_framework.response import Response
 from .serializers import ComputerSerializer,RoomSerializer
 from rest_framework import status
 from rest_framework.parsers import FileUploadParser,MultiPartParser,FormParser,JSONParser
-from .models import computer,Rooms
 from rest_framework.decorators import api_view,renderer_classes
 from rest_framework.renderers import JSONRenderer
 from .exceptions import APIException
@@ -14,7 +13,7 @@ from .models import *
 
 class ComputerView(APIView):
     parser_classes = [MultiPartParser,FormParser]
-    renderer_classes = [JSONRenderer]
+    # renderer_classes = [JSONRenderer]
     def post(self,request):
         serializer = ComputerSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
@@ -23,7 +22,7 @@ class ComputerView(APIView):
         return Response(serializer.errors)
     
     def get(self,request):
-        qs = computer.objects.all()
+        qs = Computer.objects.all()
         serializer = ComputerSerializer(qs,many = True)
         return Response(serializer.data)
 
@@ -47,16 +46,24 @@ def addNewRooms(request):
              serialializer = RoomSerializer(qs,many=True)
              return Response(serialializer.data)
     
-
 class ComputerDetailView(APIView):
     def get(self, request, pk):
         try:
-            computer = Computer.objects.get(pk=pk)
+            computer = Computer.objects.get(id=pk)
             serializer = ComputerSerializer(computer)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except computer.DoesNotExist:
-            raise APIException(f"Computer with ID {pk} does not exist")
-        except APIException as e:
-            return Response({"error": e.message}, status=status.HTTP_404_NOT_FOUND)
+            return Response({
+                "status": "success",
+                "data": serializer.data
+            }, status=status.HTTP_200_OK)
+
+        except Computer.DoesNotExist:
+            raise APIException(
+    message="Computer not found",
+    status_code=404,
+    code="computer_not_found",
+    hint="Check if the computer ID is correct",
+    extra={"requested_id": pk}
+)
+
         except Exception as e:
-            return Response({"error": "Something unexpected happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            raise APIException("Something unexpected happened", status_code=500)
