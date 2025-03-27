@@ -2,7 +2,7 @@ from django.db import models
 from django.conf import settings
 import cloudinary.models
 
-class computer(models.Model):
+class Computer(models.Model):
     name = models.TextField()
     avatar = cloudinary.models.CloudinaryField("image", null=True, blank=True) 
     video = cloudinary.models.CloudinaryField("video", null=True, blank=True)  
@@ -22,3 +22,4 @@ class Rooms(models.Model):
     description = models.TextField()
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+

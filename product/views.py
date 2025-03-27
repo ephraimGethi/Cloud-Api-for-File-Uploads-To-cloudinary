@@ -7,6 +7,9 @@ from rest_framework.parsers import FileUploadParser,MultiPartParser,FormParser,J
 from .models import computer,Rooms
 from rest_framework.decorators import api_view,renderer_classes
 from rest_framework.renderers import JSONRenderer
+from .exceptions import APIException
+from .models import *
+
 # Create your views here.
 
 class ComputerView(APIView):
@@ -44,4 +47,16 @@ def addNewRooms(request):
              serialializer = RoomSerializer(qs,many=True)
              return Response(serialializer.data)
     
-    
+
+class ComputerDetailView(APIView):
+    def get(self, request, pk):
+        try:
+            computer = Computer.objects.get(pk=pk)
+            serializer = ComputerSerializer(computer)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except computer.DoesNotExist:
+            raise APIException(f"Computer with ID {pk} does not exist")
+        except APIException as e:
+            return Response({"error": e.message}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as e:
+            return Response({"error": "Something unexpected happened"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

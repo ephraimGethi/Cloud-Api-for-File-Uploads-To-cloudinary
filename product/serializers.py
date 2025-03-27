@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from .models import computer,Rooms
+from .models import Computer,Rooms
 from rest_framework import serializers
 
 
@@ -14,7 +14,7 @@ class ComputerSerializer(serializers.ModelSerializer):
     
 
     class Meta:
-        model = computer
+        model = Computer
         fields = ['name', 'avatar', 'video', 'document', 'image', 'video_url', 'document_url', 'description']
 
     def get_image(self, obj):
