@@ -46,6 +46,8 @@ def addNewRooms(request):
                 return Response(serializer.data,status=status.HTTP_201_CREATED)
     elif request.method == 'GET':
              qs = Rooms.objects.all()
+             if qs is None:
+                 raise APIException(message="you have zero rooms in you postgres database")
              serialializer = RoomSerializer(qs,many=True)
              return Response(serialializer.data)
     
