@@ -23,8 +23,11 @@ class ComputerView(APIView):
     
     def get(self,request):
         qs = Computer.objects.all()
-        serializer = ComputerSerializer(qs,many = True)
-        return Response(serializer.data)
+        if qs is None:
+            raise APIException()
+        else:
+            serializer = ComputerSerializer(qs,many = True)
+            return Response(serializer.data)
 
 @api_view(['POST','GET'])
 @renderer_classes([JSONRenderer])
