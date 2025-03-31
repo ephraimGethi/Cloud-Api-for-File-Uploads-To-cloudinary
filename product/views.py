@@ -13,7 +13,7 @@ from .models import *
 
 class ComputerView(APIView):
     parser_classes = [MultiPartParser,FormParser]
-    # renderer_classes = [JSONRenderer]
+    renderer_classes = [JSONRenderer]
     def post(self,request):
         serializer = ComputerSerializer(data=request.data)
         if serializer.is_valid(raise_exception=True):
