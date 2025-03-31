@@ -151,5 +151,5 @@ Ensure you have the following installed:
 This project is licensed under the MIT License.
 
 ## Author
-- **Your Name** - Junior Full-Stack Developer (Django & React.js)
+- **Ephraim Gethi** - Full-Stack Developer (Django & React.js)
 
